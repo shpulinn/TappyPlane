@@ -26,11 +26,20 @@ public class OptionsScreen : MonoBehaviour {
             _soundsToggle.isOn = true;
         }
         else _soundsToggle.isOn = false;
-        _currentSoundsOn = _isSoundsOn;
         _volumeSlider.value = PlayerPrefs.GetFloat("Volume", .5f);
         _currentVolume = _volumeSlider.value;
         _languageDropdown.value = PlayerPrefs.GetInt("Language", 0);
+    }
+
+    private void OnEnable() {
+        _currentSoundsOn = _isSoundsOn;
+        _currentVolume = _volumeSlider.value;
         _currentLanguageIndex = _languageDropdown.value;
+    }
+
+    public void SetSoundsOn(bool value) {
+        _soundsToggle.isOn = value;
+        _currentSoundsOn = value == true ? 1 : 0;
     }
 
     public void SetVolume(float value) {
@@ -38,23 +47,23 @@ public class OptionsScreen : MonoBehaviour {
     }
 
     public void SetLanguage() {
-        //switch (_languageDropdown.value) {
-        //    case 0:
-        //    Lean.Localization.LeanLocalization.SetCurrentLanguageAll("English");
-        //    break;
-        //    case 1:
-        //    Lean.Localization.LeanLocalization.SetCurrentLanguageAll("Russian");
-        //    break;
-        //    case 2:
-        //    Lean.Localization.LeanLocalization.SetCurrentLanguageAll("Chinese");
-        //    break;
-        //    case 3:
-        //    Lean.Localization.LeanLocalization.SetCurrentLanguageAll("Arabic");
-        //    break;
-        //    case 4:
-        //    Lean.Localization.LeanLocalization.SetCurrentLanguageAll("Spanish");
-        //    break;
-        //}
+        switch (_languageDropdown.value) {
+            case 0:
+            Lean.Localization.LeanLocalization.SetCurrentLanguageAll("English");
+            break;
+            case 1:
+            Lean.Localization.LeanLocalization.SetCurrentLanguageAll("Russian");
+            break;
+            //case 2:
+            //Lean.Localization.LeanLocalization.SetCurrentLanguageAll("Chinese");
+            //break;
+            //case 3:
+            //Lean.Localization.LeanLocalization.SetCurrentLanguageAll("Arabic");
+            //break;
+            //case 4:
+            //Lean.Localization.LeanLocalization.SetCurrentLanguageAll("Spanish");
+            //break;
+        }
         _languageIndex = _languageDropdown.value;
     }
 
