@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MenuScreen : MonoBehaviour {
 
+    [SerializeField] private GameObject _levelChoseScreen;
     [SerializeField] private GameObject _mainMenuScreen;
     [SerializeField] private GameObject _optionsScreen;
 
@@ -26,15 +27,6 @@ public class MenuScreen : MonoBehaviour {
             //Lean.Localization.LeanLocalization.SetCurrentLanguageAll("Spanish");
             //break;
         }
-    }
-
-    public void PlayButtonClick() {
-
-    }
-
-    public void OptionsButtonClick() {
-        _mainMenuScreen.SetActive(false);
-        _optionsScreen.SetActive(true);
     }
 
     public void QuitButtonClick() {
